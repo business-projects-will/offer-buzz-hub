@@ -10,6 +10,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/community-links";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,10 +33,6 @@ export const Route = createFileRoute("/")({
   }),
   component: HomePage,
 });
-
-const WHATSAPP_URL =
-  "https://wa.me/5500000000000?text=Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas";
-const TELEGRAM_URL = "https://t.me/ofertamax_alertas";
 
 const BENEFITS = [
   {
