@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { BadgePercent, Menu, X, MessageCircle } from "lucide-react";
+import { WHATSAPP_URL } from "@/lib/community-links";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -44,7 +45,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <a
-            href="https://wa.me/5500000000000?text=Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden items-center gap-2 rounded-full bg-whatsapp px-4 py-2 text-sm font-semibold text-whatsapp-foreground transition-transform hover:scale-[1.03] active:scale-95 sm:inline-flex"
@@ -84,7 +85,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <a
-            href="https://wa.me/5500000000000?text=Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-whatsapp px-4 py-3 text-sm font-semibold text-whatsapp-foreground"
