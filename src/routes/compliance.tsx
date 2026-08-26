@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   BadgeCheck,
+  ExternalLink,
   FileText,
   Globe,
   MessageCircle,
@@ -13,20 +13,20 @@ import {
 export const Route = createFileRoute("/compliance")({
   head: () => ({
     meta: [
-      { title: "Promotional Space Overview & Compliance Registry — OfertaMax" },
+      { title: "Apoio ao Afiliado — Achadinhos-AW" },
       {
         name: "description",
         content:
-          "Registro de conformidade do espaço promocional OfertaMax para validação de publisher Awin: Direct Linker & Coupon Portal com tráfego via canais de mensagens segmentados.",
+          "Informações de apoio aos programas de afiliados Awin e Mercado Livre do Achadinhos-AW.",
       },
       {
         property: "og:title",
-        content: "Promotional Space Overview & Compliance Registry — OfertaMax",
+        content: "Apoio ao Afiliado — Achadinhos-AW",
       },
       {
         property: "og:description",
         content:
-          "Registro de conformidade do espaço promocional OfertaMax para validação de publisher Awin.",
+          "Informações de apoio aos programas de afiliados Awin e Mercado Livre do Achadinhos-AW.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -63,8 +63,11 @@ const TRAFFIC_SPLIT = [
 ] as const;
 
 function CompliancePage() {
-  const [publisherId, setPublisherId] = useState("1234567");
-  const sanitizedId = publisherId.replace(/[^0-9a-zA-Z-]/g, "").slice(0, 16) || "0000000";
+  const publisherId = import.meta.env.VITE_AWIN_PUBLISHER_ID ?? "3052029";
+  const awinRegistration = import.meta.env.VITE_AWIN_REGISTRATION ?? "AW-3052029";
+  const mercadoLivreUrl =
+    import.meta.env.VITE_MERCADO_LIVRE_AFFILIATE_URL ??
+    "https://www.mercadolivre.com.br/social/elwi4875632";
 
   return (
     <section className="px-4 py-12 sm:px-6 sm:py-16">
@@ -91,43 +94,61 @@ function CompliancePage() {
           </div>
         </header>
 
-        {/* Publisher ID dinâmico */}
+        {/* Dados dos programas de afiliados */}
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           <div className="glass-panel rounded-3xl p-7">
             <h2 className="font-display flex items-center gap-2 text-lg font-bold">
               <BadgeCheck className="h-5 w-5 text-primary" aria-hidden />
-              Publisher ID (ambiente de teste)
+              Awin
             </h2>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-              Informe o ID de publisher de teste para pré-visualizar como o registro será exibido na
-              validação.
+              Dados do publisher configurados por variáveis de ambiente.
             </p>
-            <label className="mt-4 block">
-              <span className="sr-only">ID de publisher de teste</span>
-              <input
-                type="text"
-                value={publisherId}
-                onChange={(e) => setPublisherId(e.target.value)}
-                placeholder="Ex.: 1234567"
-                inputMode="numeric"
-                className="glass-panel w-full rounded-xl px-4 py-3 text-sm outline-none placeholder:text-muted-foreground/50 focus:border-primary/50"
-              />
-            </label>
             <div className="mt-4 rounded-xl bg-background/50 p-4">
               <p className="text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
-                Registro ativo
+                Publisher ID
               </p>
               <p className="font-display mt-1 font-mono text-lg font-bold text-telegram">
-                AW-TEST-{sanitizedId}
+                {publisherId}
               </p>
-              <p className="mt-1 text-[11px] text-muted-foreground">
-                Status: <span className="font-semibold text-primary">pendente de validação</span>
+              <p className="mt-4 text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
+                Registro
+              </p>
+              <p className="font-display mt-1 font-mono text-sm font-bold text-primary">
+                {awinRegistration}
               </p>
             </div>
           </div>
 
-          {/* Descrição formal */}
           <div className="glass-panel rounded-3xl p-7">
+            <h2 className="font-display flex items-center gap-2 text-lg font-bold">
+              <BadgeCheck className="h-5 w-5 text-primary" aria-hidden />
+              Mercado Livre
+            </h2>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Página oficial do afiliado para consultar as ofertas divulgadas pelo Achadinhos-AW.
+            </p>
+            <div className="mt-4 rounded-xl bg-background/50 p-4">
+              <p className="text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
+                Página de afiliado
+              </p>
+              <p className="mt-1 truncate font-mono text-xs text-muted-foreground">
+                {mercadoLivreUrl}
+              </p>
+            </div>
+            <a
+              href={mercadoLivreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
+            >
+              Acessar página no Mercado Livre
+              <ExternalLink className="h-4 w-4" aria-hidden />
+            </a>
+          </div>
+
+          {/* Descrição formal */}
+          <div className="glass-panel rounded-3xl p-7 md:col-span-2">
             <h2 className="font-display flex items-center gap-2 text-lg font-bold">
               <FileText className="h-5 w-5 text-telegram" aria-hidden />
               Modelo de operação
@@ -148,8 +169,8 @@ function CompliancePage() {
                   Portal, distribuindo links rastreáveis e códigos de cupom exclusivamente por meio
                   de canais de mensagens segmentados (grupos de WhatsApp e canais de Telegram
                   organizados por categoria de interesse), além de vitrine web própria. Todo clique
-                  é atribuído via deep links rastreáveis da rede, sem uso de adware, iframes
-                  ocultos ou cookie dropping.
+                  é atribuído via deep links rastreáveis da rede, sem uso de adware, iframes ocultos
+                  ou cookie dropping.
                 </dd>
               </div>
               <div>
@@ -157,16 +178,19 @@ function CompliancePage() {
                   Métodos promocionais
                 </dt>
                 <dd className="mt-1 flex flex-wrap gap-1.5">
-                  {["Coupon / Voucher", "Deep Linking", "Content / Curadoria", "Comunidades segmentadas"].map(
-                    (m) => (
-                      <span
-                        key={m}
-                        className="rounded-full bg-secondary px-3 py-1 text-[11px] font-medium"
-                      >
-                        {m}
-                      </span>
-                    )
-                  )}
+                  {[
+                    "Coupon / Voucher",
+                    "Deep Linking",
+                    "Content / Curadoria",
+                    "Comunidades segmentadas",
+                  ].map((m) => (
+                    <span
+                      key={m}
+                      className="rounded-full bg-secondary px-3 py-1 text-[11px] font-medium"
+                    >
+                      {m}
+                    </span>
+                  ))}
                 </dd>
               </div>
             </dl>

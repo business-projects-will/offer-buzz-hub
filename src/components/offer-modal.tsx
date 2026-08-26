@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check, Copy, ExternalLink, ListOrdered, Tag, X } from "lucide-react";
 import { toast } from "sonner";
-import { buildTrackedUrl, formatBRL, CATEGORY_LABELS, type Offer } from "@/data/offers";
+import {
+  buildTrackedUrl,
+  formatBRL,
+  CATEGORY_LABELS,
+  SOURCE_LABELS,
+  type Offer,
+} from "@/data/offers";
 
 interface OfferModalProps {
   offer: Offer | null;
@@ -42,7 +48,7 @@ export function OfferModal({ offer, onClose }: OfferModalProps) {
 
   const openTracked = () => {
     toast.success("Link rastreável simulado", {
-      description: "Em produção, você seria redirecionado à loja parceira com atribuição Awin.",
+      description: `Em produção, você seria redirecionado à loja parceira com atribuição ${SOURCE_LABELS[offer.source]}.`,
     });
   };
 

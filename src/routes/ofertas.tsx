@@ -1,20 +1,28 @@
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Search, SearchX, Tag } from "lucide-react";
-import { CATEGORY_LABELS, OFFERS, formatBRL, type Offer, type OfferCategory } from "@/data/offers";
+import { ChevronLeft, ChevronRight, Clock, Search, SearchX, Tag } from "lucide-react";
+import {
+  CATEGORY_LABELS,
+  OFFERS,
+  SOURCE_LABELS,
+  formatBRL,
+  type Offer,
+  type OfferCategory,
+  type OfferSource,
+} from "@/data/offers";
 import { OfferModal } from "@/components/offer-modal";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/ofertas")({
   head: () => ({
     meta: [
-      { title: "Ofertas Hoje — OfertaMax | Promoções e Cupons Verificados" },
+      { title: "Ofertas Hoje — Achadinhos-AW | Promoções e Cupons Verificados" },
       {
         name: "description",
         content:
           "Busque e filtre as ofertas de hoje em Tecnologia, Moda, Pets e Cosméticos. Descontos de até 33% com cupons exclusivos para membros.",
       },
-      { property: "og:title", content: "Ofertas Hoje — OfertaMax" },
+      { property: "og:title", content: "Ofertas Hoje — Achadinhos-AW" },
       {
         property: "og:description",
         content:
@@ -28,6 +36,8 @@ export const Route = createFileRoute("/ofertas")({
 });
 
 type CategoryFilter = "todas" | OfferCategory;
+type SourceFilter = "todas" | OfferSource;
+const ITEMS_PER_PAGE = 6;
 
 const FILTERS: { value: CategoryFilter; label: string }[] = [
   { value: "todas", label: "Todas" },
@@ -40,20 +50,33 @@ const FILTERS: { value: CategoryFilter; label: string }[] = [
 function OfertasPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CategoryFilter>("todas");
+  const [source, setSource] = useState<SourceFilter>("todas");
+  const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<Offer | null>(null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return OFFERS.filter((o) => {
       const matchCategory = category === "todas" || o.category === category;
+      const matchSource = source === "todas" || o.source === source;
       const matchQuery =
         !q ||
         o.title.toLowerCase().includes(q) ||
         o.store.toLowerCase().includes(q) ||
+        SOURCE_LABELS[o.source].toLowerCase().includes(q) ||
         CATEGORY_LABELS[o.category].toLowerCase().includes(q);
-      return matchCategory && matchQuery;
+      return matchCategory && matchSource && matchQuery;
     });
-  }, [query, category]);
+  }, [query, category, source]);
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+  const currentPage = Math.min(page, pageCount);
+  const visibleOffers = filtered.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
+  const resetPage = () => setPage(1);
 
   return (
     <section className="px-4 py-12 sm:px-6 sm:py-16">
@@ -80,7 +103,10 @@ function OfertasPage() {
             <input
               type="search"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                resetPage();
+              }}
               placeholder="Buscar por produto, loja ou categoria…"
               className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground/60"
             />
@@ -91,16 +117,46 @@ function OfertasPage() {
               <button
                 key={f.value}
                 type="button"
-                onClick={() => setCategory(f.value)}
+                onClick={() => {
+                  setCategory(f.value);
+                  resetPage();
+                }}
                 aria-pressed={category === f.value}
                 className={cn(
                   "rounded-full px-4 py-2 text-xs font-semibold transition-all",
                   category === f.value
                     ? "bg-whatsapp text-whatsapp-foreground shadow-[var(--glow-whatsapp)]"
-                    : "glass-panel text-muted-foreground hover:text-foreground"
+                    : "glass-panel text-muted-foreground hover:text-foreground",
                 )}
               >
                 {f.label}
+              </button>
+            ))}
+          </div>
+
+          <div
+            className="flex flex-wrap items-center gap-2"
+            role="group"
+            aria-label="Filtrar por fonte"
+          >
+            <span className="mr-1 text-xs font-semibold text-muted-foreground">Fonte:</span>
+            {(["todas", "awin", "mercado-livre"] as const).map((value) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => {
+                  setSource(value);
+                  resetPage();
+                }}
+                aria-pressed={source === value}
+                className={cn(
+                  "rounded-full px-4 py-2 text-xs font-semibold transition-all",
+                  source === value
+                    ? "bg-telegram text-telegram-foreground shadow-[var(--glow-telegram)]"
+                    : "glass-panel text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {value === "todas" ? "Todas" : SOURCE_LABELS[value]}
               </button>
             ))}
           </div>
@@ -117,7 +173,7 @@ function OfertasPage() {
           </div>
         ) : (
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((offer) => (
+            {visibleOffers.map((offer) => (
               <article
                 key={offer.id}
                 className="glass-panel group flex flex-col overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-[var(--glow-whatsapp)]"
@@ -143,7 +199,8 @@ function OfertasPage() {
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <p className="text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
-                    {CATEGORY_LABELS[offer.category]} · {offer.store}
+                    {SOURCE_LABELS[offer.source]} · {CATEGORY_LABELS[offer.category]} ·{" "}
+                    {offer.store}
                   </p>
                   <h2 className="font-display mt-1.5 text-base leading-snug font-bold">
                     {offer.title}
@@ -172,6 +229,48 @@ function OfertasPage() {
               </article>
             ))}
           </div>
+        )}
+
+        {filtered.length > 0 && pageCount > 1 && (
+          <nav
+            className="mt-8 flex items-center justify-center gap-2"
+            aria-label="Paginação de ofertas"
+          >
+            <button
+              type="button"
+              onClick={() => setPage((value) => Math.max(1, value - 1))}
+              disabled={currentPage === 1}
+              className="glass-panel grid h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+              aria-label="Página anterior"
+            >
+              <ChevronLeft className="h-4 w-4" aria-hidden />
+            </button>
+            {Array.from({ length: pageCount }, (_, index) => index + 1).map((pageNumber) => (
+              <button
+                key={pageNumber}
+                type="button"
+                onClick={() => setPage(pageNumber)}
+                aria-current={currentPage === pageNumber ? "page" : undefined}
+                className={cn(
+                  "grid h-10 w-10 place-items-center rounded-full text-xs font-bold transition-colors",
+                  currentPage === pageNumber
+                    ? "bg-whatsapp text-whatsapp-foreground"
+                    : "glass-panel text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {pageNumber}
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => setPage((value) => Math.min(pageCount, value + 1))}
+              disabled={currentPage === pageCount}
+              className="glass-panel grid h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+              aria-label="Próxima página"
+            >
+              <ChevronRight className="h-4 w-4" aria-hidden />
+            </button>
+          </nav>
         )}
 
         <p className="mt-10 text-center text-[11px] text-muted-foreground/70">

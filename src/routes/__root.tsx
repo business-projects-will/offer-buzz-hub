@@ -77,18 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "OfertaMax — Clube VIP de Ofertas no WhatsApp e Telegram" },
+      { title: "Achadinhos-AW — Clube VIP de Ofertas no WhatsApp e Telegram" },
       {
         name: "description",
         content:
           "Receba as melhores ofertas, cupons e bugs de preço em tempo real nos nossos grupos VIP de WhatsApp e Telegram. Economize todos os dias.",
       },
-      { name: "author", content: "OfertaMax" },
-      { property: "og:title", content: "OfertaMax — Clube VIP de Ofertas" },
+      { name: "author", content: "Achadinhos-AW" },
+      { property: "og:title", content: "Achadinhos-AW — Clube VIP de Ofertas" },
       {
         property: "og:description",
-        content:
-          "Ofertas, cupons e alertas de bug de preço em tempo real no WhatsApp e Telegram.",
+        content: "Ofertas, cupons e alertas de bug de preço em tempo real no WhatsApp e Telegram.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
