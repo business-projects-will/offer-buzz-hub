@@ -73,8 +73,8 @@ function CompliancePage() {
     <section className="px-4 py-12 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-4xl">
         {/* Cabeçalho corporativo */}
-        <header className="glass-panel rounded-3xl p-7 sm:p-10">
-          <div className="flex items-start gap-4">
+        <header className="glass-panel rounded-3xl p-5 sm:p-10">
+          <div className="flex flex-col items-start gap-4 sm:flex-row">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-telegram/12 text-telegram">
               <ShieldCheck className="h-6 w-6" aria-hidden />
             </span>
@@ -96,7 +96,7 @@ function CompliancePage() {
 
         {/* Dados dos programas de afiliados */}
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div className="glass-panel rounded-3xl p-7">
+          <div className="glass-panel rounded-3xl p-5 sm:p-7">
             <h2 className="font-display flex items-center gap-2 text-lg font-bold">
               <BadgeCheck className="h-5 w-5 text-primary" aria-hidden />
               Awin
@@ -120,7 +120,7 @@ function CompliancePage() {
             </div>
           </div>
 
-          <div className="glass-panel rounded-3xl p-7">
+          <div className="glass-panel rounded-3xl p-5 sm:p-7">
             <h2 className="font-display flex items-center gap-2 text-lg font-bold">
               <BadgeCheck className="h-5 w-5 text-primary" aria-hidden />
               Mercado Livre
@@ -140,7 +140,7 @@ function CompliancePage() {
               href={mercadoLivreUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-primary-foreground transition-transform hover:scale-[1.02]"
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-center text-sm font-bold text-primary-foreground transition-transform hover:scale-[1.02] sm:w-auto"
             >
               Acessar página no Mercado Livre
               <ExternalLink className="h-4 w-4" aria-hidden />
@@ -148,7 +148,7 @@ function CompliancePage() {
           </div>
 
           {/* Descrição formal */}
-          <div className="glass-panel rounded-3xl p-7 md:col-span-2">
+          <div className="glass-panel rounded-3xl p-5 sm:p-7 md:col-span-2">
             <h2 className="font-display flex items-center gap-2 text-lg font-bold">
               <FileText className="h-5 w-5 text-telegram" aria-hidden />
               Modelo de operação
@@ -198,7 +198,7 @@ function CompliancePage() {
         </div>
 
         {/* Divisão de tráfego */}
-        <div className="glass-panel mt-6 rounded-3xl p-7 sm:p-8">
+        <div className="glass-panel mt-6 rounded-3xl p-5 sm:p-8">
           <h2 className="font-display flex items-center gap-2 text-lg font-bold">
             <Globe className="h-5 w-5 text-neon-violet" aria-hidden />
             Divisão de tráfego estimada
@@ -227,12 +227,12 @@ function CompliancePage() {
         </div>
 
         {/* Caixa legal Awin */}
-        <div className="mt-6 rounded-3xl border border-border bg-card p-7 sm:p-8">
+        <div className="mt-6 rounded-3xl border border-border bg-card p-5 sm:p-8">
           <h2 className="font-display flex items-center gap-2 text-lg font-bold">
             <Scale className="h-5 w-5 text-primary" aria-hidden />
             Awin Affiliate Disclosure
           </h2>
-          <div className="mt-4 rounded-2xl bg-background/50 p-5">
+          <div className="mt-4 rounded-2xl bg-background/50 p-4 sm:p-5">
             <p className="text-sm leading-relaxed text-muted-foreground">
               This website is a registered publisher on the Awin affiliate network. Some of the
               links and promotional codes displayed on this portal and distributed through our

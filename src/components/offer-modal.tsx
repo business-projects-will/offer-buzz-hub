@@ -61,7 +61,7 @@ export function OfferModal({ offer, onClose }: OfferModalProps) {
       onClick={onClose}
     >
       <div
-        className="glass-panel max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl p-6 shadow-2xl sm:rounded-3xl"
+        className="glass-panel max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl p-4 shadow-2xl sm:rounded-3xl sm:p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
@@ -97,14 +97,14 @@ export function OfferModal({ offer, onClose }: OfferModalProps) {
             <p className="text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
               Cupom disponível {offer.couponLabel ? `— ${offer.couponLabel}` : ""}
             </p>
-            <div className="mt-2 flex items-center gap-2">
+            <div className="mt-2 flex flex-col gap-2 min-[400px]:flex-row min-[400px]:items-center">
               <code className="font-display flex-1 rounded-xl bg-background/60 px-4 py-3 text-center text-lg font-bold tracking-[0.2em] text-primary">
                 {offer.coupon}
               </code>
               <button
                 type="button"
                 onClick={copyCoupon}
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-whatsapp px-4 py-3 text-sm font-semibold text-whatsapp-foreground transition-transform hover:scale-[1.03] active:scale-95"
+                className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-whatsapp px-4 py-3 text-sm font-semibold text-whatsapp-foreground transition-transform hover:scale-[1.03] active:scale-95"
               >
                 {copied ? (
                   <Check className="h-4 w-4" aria-hidden />

@@ -112,7 +112,11 @@ function OfertasPage() {
             />
           </label>
 
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoria">
+          <div
+            className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
+            role="group"
+            aria-label="Filtrar por categoria"
+          >
             {FILTERS.map((f) => (
               <button
                 key={f.value}
@@ -123,7 +127,7 @@ function OfertasPage() {
                 }}
                 aria-pressed={category === f.value}
                 className={cn(
-                  "rounded-full px-4 py-2 text-xs font-semibold transition-all",
+                  "shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all",
                   category === f.value
                     ? "bg-whatsapp text-whatsapp-foreground shadow-[var(--glow-whatsapp)]"
                     : "glass-panel text-muted-foreground hover:text-foreground",
@@ -135,7 +139,7 @@ function OfertasPage() {
           </div>
 
           <div
-            className="flex flex-wrap items-center gap-2"
+            className="-mx-4 flex items-center gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0"
             role="group"
             aria-label="Filtrar por fonte"
           >
@@ -150,7 +154,7 @@ function OfertasPage() {
                 }}
                 aria-pressed={source === value}
                 className={cn(
-                  "rounded-full px-4 py-2 text-xs font-semibold transition-all",
+                  "shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all",
                   source === value
                     ? "bg-telegram text-telegram-foreground shadow-[var(--glow-telegram)]"
                     : "glass-panel text-muted-foreground hover:text-foreground",

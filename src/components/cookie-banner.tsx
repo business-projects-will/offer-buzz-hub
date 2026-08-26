@@ -36,7 +36,7 @@ export function CookieBanner() {
       role="dialog"
       aria-live="polite"
       aria-label="Aviso de cookies"
-      className="glass-panel fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md rounded-2xl p-4 shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-6"
+      className="glass-panel fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md rounded-2xl p-4 shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-6"
     >
       <div className="flex items-start gap-3">
         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-telegram/15 text-telegram">
@@ -48,7 +48,7 @@ export function CookieBanner() {
             Usamos cookies para melhorar sua experiência e medir o desempenho dos nossos links de
             afiliado. Ao continuar, você concorda com essa utilização.
           </p>
-          <div className="mt-3 flex gap-2">
+          <div className="mt-3 flex flex-col gap-2 min-[400px]:flex-row">
             <button
               type="button"
               onClick={accept}

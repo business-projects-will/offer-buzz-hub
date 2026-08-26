@@ -81,7 +81,7 @@ function HomePage() {
             <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden />
             Novas ofertas verificadas todos os dias
           </span>
-          <h1 className="font-display mt-6 text-4xl leading-[1.05] font-bold tracking-tight sm:text-6xl">
+          <h1 className="font-display mt-6 text-3xl leading-[1.08] font-bold tracking-tight min-[380px]:text-4xl sm:text-6xl sm:leading-[1.05]">
             Economize de verdade com{" "}
             <span className="text-primary text-glow-whatsapp">ofertas VIP</span> direto no seu{" "}
             <span className="text-telegram text-glow-telegram">celular</span>
@@ -98,7 +98,7 @@ function HomePage() {
       <section className="px-4 pb-16 sm:px-6" aria-label="Canais de ofertas">
         <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
           {/* WhatsApp */}
-          <article className="glass-panel group relative overflow-hidden rounded-3xl p-7 shadow-[var(--glow-whatsapp)] transition-transform duration-300 hover:-translate-y-1 sm:p-9">
+          <article className="glass-panel group relative overflow-hidden rounded-3xl p-5 shadow-[var(--glow-whatsapp)] transition-transform duration-300 hover:-translate-y-1 sm:p-9">
             <div
               aria-hidden
               className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-whatsapp/15 blur-3xl"
@@ -134,7 +134,7 @@ function HomePage() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="animate-pulse-ring mt-7 inline-flex items-center gap-2 rounded-2xl bg-whatsapp px-6 py-3.5 text-sm font-bold text-whatsapp-foreground transition-transform duration-200 group-hover:scale-[1.02] hover:scale-[1.05] active:scale-95"
+                className="animate-pulse-ring mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-whatsapp px-5 py-3.5 text-center text-sm font-bold text-whatsapp-foreground transition-transform duration-200 group-hover:scale-[1.02] hover:scale-[1.05] active:scale-95 sm:w-auto sm:px-6"
               >
                 <MessageCircle className="h-4 w-4" aria-hidden />
                 Entrar no Grupo VIP
@@ -143,7 +143,7 @@ function HomePage() {
           </article>
 
           {/* Telegram */}
-          <article className="glass-panel group relative overflow-hidden rounded-3xl p-7 shadow-[var(--glow-telegram)] transition-transform duration-300 hover:-translate-y-1 sm:p-9">
+          <article className="glass-panel group relative overflow-hidden rounded-3xl p-5 shadow-[var(--glow-telegram)] transition-transform duration-300 hover:-translate-y-1 sm:p-9">
             <div
               aria-hidden
               className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-telegram/15 blur-3xl"
@@ -179,7 +179,7 @@ function HomePage() {
                 href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-flex items-center gap-2 rounded-2xl bg-telegram px-6 py-3.5 text-sm font-bold text-telegram-foreground transition-transform duration-200 group-hover:scale-[1.02] hover:scale-[1.05] active:scale-95"
+                className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-telegram px-5 py-3.5 text-center text-sm font-bold text-telegram-foreground transition-transform duration-200 group-hover:scale-[1.02] hover:scale-[1.05] active:scale-95 sm:w-auto sm:px-6"
               >
                 <Send className="h-4 w-4" aria-hidden />
                 Inscrever-se no Canal
@@ -217,7 +217,7 @@ function HomePage() {
           <div className="mt-12 text-center">
             <Link
               to="/ofertas"
-              className="inline-flex items-center gap-2 rounded-2xl border border-border bg-secondary/60 px-7 py-3.5 text-sm font-semibold transition-all hover:scale-[1.03] hover:border-primary/50 hover:text-primary"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-border bg-secondary/60 px-5 py-3.5 text-sm font-semibold transition-all hover:scale-[1.03] hover:border-primary/50 hover:text-primary sm:w-auto sm:px-7"
             >
               Ver as ofertas de hoje
               <ArrowRight className="h-4 w-4" aria-hidden />
