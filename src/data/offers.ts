@@ -8,12 +8,14 @@ import keyboardImg from "@/assets/offers/keyboard.jpg";
 import pettoysImg from "@/assets/offers/pettoys.jpg";
 
 export type OfferCategory = "tecnologia" | "moda" | "pets" | "cosmeticos";
+export type OfferSource = "awin" | "mercado-livre";
 
 export interface Offer {
   id: string;
   title: string;
   store: string;
   category: OfferCategory;
+  source: OfferSource;
   image: string;
   originalPrice: number;
   salePrice: number;
@@ -31,12 +33,18 @@ export const CATEGORY_LABELS: Record<OfferCategory, string> = {
   cosmeticos: "Cosméticos",
 };
 
+export const SOURCE_LABELS: Record<OfferSource, string> = {
+  awin: "Awin",
+  "mercado-livre": "Mercado Livre",
+};
+
 export const OFFERS: Offer[] = [
   {
     id: "air-max-masc",
     title: "Tênis Nike Air Max Masculino",
     store: "Loja Parceira Oficial",
     category: "moda",
+    source: "awin",
     image: sneakerImg,
     originalPrice: 899.9,
     salePrice: 599.9,
@@ -49,6 +57,7 @@ export const OFFERS: Offer[] = [
     title: "Ração Zee.Dog 15kg Premium",
     store: "Pet Store Parceira",
     category: "pets",
+    source: "mercado-livre",
     image: dogfoodImg,
     originalPrice: 189.9,
     salePrice: 149.9,
@@ -61,6 +70,7 @@ export const OFFERS: Offer[] = [
     title: "Fone Bluetooth Noise Canceling Pro",
     store: "Tech Deals BR",
     category: "tecnologia",
+    source: "awin",
     image: headphonesImg,
     originalPrice: 499.9,
     salePrice: 349.9,
@@ -74,6 +84,7 @@ export const OFFERS: Offer[] = [
     title: "Smartwatch Fit Pro X2 AMOLED",
     store: "Tech Deals BR",
     category: "tecnologia",
+    source: "mercado-livre",
     image: smartwatchImg,
     originalPrice: 399.9,
     salePrice: 279.9,
@@ -85,6 +96,7 @@ export const OFFERS: Offer[] = [
     title: "Sérum Facial Vitamina C 30ml",
     store: "Beauty Club",
     category: "cosmeticos",
+    source: "awin",
     image: serumImg,
     originalPrice: 129.9,
     salePrice: 89.9,
@@ -98,6 +110,7 @@ export const OFFERS: Offer[] = [
     title: "Bolsa de Couro Milano Matelassê",
     store: "Moda & Cia",
     category: "moda",
+    source: "mercado-livre",
     image: handbagImg,
     originalPrice: 349.9,
     salePrice: 244.9,
@@ -109,6 +122,7 @@ export const OFFERS: Offer[] = [
     title: "Teclado Mecânico RGB 87 Teclas",
     store: "Setup Gamer Outlet",
     category: "tecnologia",
+    source: "awin",
     image: keyboardImg,
     originalPrice: 449.9,
     salePrice: 314.9,
@@ -122,6 +136,7 @@ export const OFFERS: Offer[] = [
     title: "Kit Brinquedos Pet Interativo",
     store: "Pet Store Parceira",
     category: "pets",
+    source: "mercado-livre",
     image: pettoysImg,
     originalPrice: 89.9,
     salePrice: 59.9,
@@ -141,10 +156,10 @@ export function buildTrackedUrl(offer: Offer, source = "web"): string {
   const params = new URLSearchParams({
     oid: offer.id,
     src: source,
-    aff: "awin",
+    aff: offer.source,
     utm_medium: "affiliate",
-    utm_source: "ofertamax",
+    utm_source: "achadinhos-aw",
     utm_campaign: offer.category,
   });
-  return `https://rastreio.ofertamax.app/click?${params.toString()}`;
+  return `https://rastreio.achadinhos-aw.app/click?${params.toString()}`;
 }

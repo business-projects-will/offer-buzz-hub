@@ -15,17 +15,15 @@ import { TELEGRAM_URL, WHATSAPP_URL } from "@/lib/community-links";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "OfertaMax — Ofertas VIP no WhatsApp e Telegram em Tempo Real" },
+      { title: "Achadinhos-AW — Ofertas VIP no WhatsApp e Telegram em Tempo Real" },
       {
         name: "description",
-        content:
-          "Entre para o clube VIP de ofertas: +14.500 membros economizando diariamente com cupons, promoções e alertas instantâneos de bug de preço.",
+        content: "Seja membro e pegue os melhores cupons e ofertas no WhatsApp e Telegram.",
       },
-      { property: "og:title", content: "OfertaMax — Ofertas VIP no WhatsApp e Telegram" },
+      { property: "og:title", content: "Achadinhos-AW — Ofertas VIP no WhatsApp e Telegram" },
       {
         property: "og:description",
-        content:
-          "Entre para o clube VIP de ofertas: +14.500 membros economizando diariamente com cupons e alertas de bug de preço.",
+        content: "Seja membro e pegue os melhores cupons e ofertas no WhatsApp e Telegram.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -114,21 +112,23 @@ function HomePage() {
               </h2>
               <p className="mt-3 flex items-center gap-2 text-sm font-semibold text-whatsapp">
                 <Users className="h-4 w-4" aria-hidden />
-                +14.500 membros economizando diariamente
+                Seja membro e pegue os melhores cupons e ofertas
               </p>
               <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
                 As melhores ofertas do dia selecionadas à mão pela nossa curadoria, com cupons
                 exclusivos e aviso antes de expirar.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                {["Ofertas verificadas pela equipe", "Cupons exclusivos de lojas parceiras", "Aviso de expiração em tempo real"].map(
-                  (item) => (
-                    <li key={item} className="flex items-center gap-2">
-                      <ShieldCheck className="h-4 w-4 shrink-0 text-whatsapp" aria-hidden />
-                      {item}
-                    </li>
-                  )
-                )}
+                {[
+                  "Ofertas verificadas pela equipe",
+                  "Cupons exclusivos de lojas parceiras",
+                  "Aviso de expiração em tempo real",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 shrink-0 text-whatsapp" aria-hidden />
+                    {item}
+                  </li>
+                ))}
               </ul>
               <a
                 href={WHATSAPP_URL}
@@ -157,21 +157,23 @@ function HomePage() {
               </h2>
               <p className="mt-3 flex items-center gap-2 text-sm font-semibold text-telegram">
                 <Zap className="h-4 w-4" aria-hidden />
-                Alertas de bugs de preço instantâneos
+                Seja membro e pegue os melhores cupons e ofertas
               </p>
               <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
                 Velocidade é tudo: quando uma loja erra o preço, você recebe o alerta em segundos —
                 antes de corrigirem.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                {["Notificações em segundos", "Histórico completo de alertas", "Filtros por categoria favorita"].map(
-                  (item) => (
-                    <li key={item} className="flex items-center gap-2">
-                      <ShieldCheck className="h-4 w-4 shrink-0 text-telegram" aria-hidden />
-                      {item}
-                    </li>
-                  )
-                )}
+                {[
+                  "Notificações em segundos",
+                  "Histórico completo de alertas",
+                  "Filtros por categoria favorita",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4 shrink-0 text-telegram" aria-hidden />
+                    {item}
+                  </li>
+                ))}
               </ul>
               <a
                 href={TELEGRAM_URL}

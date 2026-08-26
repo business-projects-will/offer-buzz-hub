@@ -39,3 +39,8 @@
 Priorize sempre a **menor alteração possível** capaz de atender corretamente ao prompt.
 
 Quando houver ambiguidade que possa causar mudanças significativas fora do escopo, pergunte antes de implementar.
+
+## Project Context
+
+* Consulte `PROJECT_CONTEXT.md` antes de alterar o projeto.
+* Ao concluir alterações que mudem o estado do projeto, atualize `PROJECT_CONTEXT.md` no mesmo trabalho.

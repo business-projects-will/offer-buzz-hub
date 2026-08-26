@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Cookie, X } from "lucide-react";
 
-const STORAGE_KEY = "ofertamax-cookie-consent";
+const STORAGE_KEY = "achadinhos-aw-cookie-consent";
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);

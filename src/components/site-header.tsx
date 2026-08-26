@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { BadgePercent, Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/community-links";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/achadinhos-v2-circular (2).png";
 
 const NAV_ITEMS = [
   { to: "/", label: "Início" },
@@ -19,14 +20,16 @@ export function SiteHeader() {
         <Link
           to="/"
           className="flex min-w-0 shrink-0 items-center gap-2"
-          aria-label="OfertaMax — Início"
+          aria-label="Achadinhos-AW — Início"
         >
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary shadow-[var(--glow-whatsapp)]">
-            <BadgePercent className="h-5 w-5" aria-hidden />
-          </span>
-          <span className="font-display text-lg font-bold tracking-tight">
-            Oferta<span className="text-primary text-glow-whatsapp">Max</span>
-          </span>
+          <img
+            src={logo}
+            alt=""
+            width={36}
+            height={36}
+            className="h-9 w-9 shrink-0 rounded-full object-cover shadow-[var(--glow-whatsapp)]"
+          />
+          <span className="font-display text-lg font-bold tracking-tight">Achadinhos-AW</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Navegação principal">
@@ -60,7 +63,11 @@ export function SiteHeader() {
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
           >
-            {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
+            {open ? (
+              <X className="h-5 w-5" aria-hidden />
+            ) : (
+              <Menu className="h-5 w-5" aria-hidden />
+            )}
           </button>
         </div>
       </div>
@@ -68,7 +75,7 @@ export function SiteHeader() {
       <div
         className={cn(
           "overflow-hidden transition-[max-height] duration-300 md:hidden",
-          open ? "max-h-72" : "max-h-0"
+          open ? "max-h-72" : "max-h-0",
         )}
       >
         <nav className="flex flex-col gap-1 px-4 pb-4" aria-label="Navegação móvel">
