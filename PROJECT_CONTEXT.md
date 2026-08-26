@@ -19,6 +19,7 @@ O projeto usa React 19, TanStack Start/Router, TypeScript, Vite 8 e Tailwind CSS
 - Nome oficial: Achadinhos-AW.
 - Logo: `src/assets/achadinhos-v2-circular (2).png`, exibida circularmente no cabeçalho e rodapé.
 - O ano do copyright é calculado dinamicamente com `new Date().getFullYear()`.
+- O layout é responsivo para mobile, com navegação recolhível, CTAs fluidos, filtros com rolagem horizontal e modais adaptados a telas estreitas.
 
 ## Ofertas
 
