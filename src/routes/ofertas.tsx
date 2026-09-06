@@ -84,14 +84,14 @@ function OfertasPage() {
         <header className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/12 px-4 py-1.5 text-xs font-semibold text-primary">
             <Clock className="h-3.5 w-3.5" aria-hidden />
-            Atualizadas hoje
+            Em desenvolvimento
           </span>
           <h1 className="font-display mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
             Ofertas de <span className="text-primary text-glow-whatsapp">hoje</span>
           </h1>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Curadoria verificada pela equipe. Clique em uma oferta para ver o cupom (quando
-            disponível) e o link rastreável.
+            Estamos preparando as ofertas de hoje. Os produtos abaixo são demonstrativos. Em breve,
+            você poderá conferir ofertas e cupons atualizados por aqui.
           </p>
         </header>
 
@@ -156,7 +156,7 @@ function OfertasPage() {
                 className={cn(
                   "shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition-all",
                   source === value
-                    ? "bg-telegram text-telegram-foreground shadow-[var(--glow-telegram)]"
+                    ? "bg-neon-cyan text-neon-cyan-foreground shadow-[var(--glow-neon-cyan)]"
                     : "glass-panel text-muted-foreground hover:text-foreground",
                 )}
               >
@@ -196,7 +196,7 @@ function OfertasPage() {
                     {offer.discount}% OFF
                   </span>
                   {offer.coupon && (
-                    <span className="absolute top-3 right-3 rounded-full bg-background/80 px-3 py-1 text-[10px] font-bold tracking-wider text-telegram backdrop-blur">
+                    <span className="absolute top-3 right-3 rounded-full bg-background/80 px-3 py-1 text-[10px] font-bold tracking-wider text-neon-cyan backdrop-blur">
                       CUPOM
                     </span>
                   )}

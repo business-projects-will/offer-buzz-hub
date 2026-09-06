@@ -7,7 +7,7 @@
 /*
  * Design system — Achadinhos-AW (dark neon, bento)
  * Background gradient: #0D0E15 -> #151828
- * Accent CTAs: emerald (WhatsApp) / cyan (Telegram)
+ * Accent CTAs: emerald (WhatsApp) / cyan
  */
 
 @theme inline {
@@ -40,8 +40,8 @@
   --color-ring-offset-background: var(--background);
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-foreground: var(--whatsapp-foreground);
-  --color-telegram: var(--telegram);
-  --color-telegram-foreground: var(--telegram-foreground);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-cyan-foreground: var(--neon-cyan-foreground);
   --color-neon-violet: var(--neon-violet);
   --color-surface-2: var(--surface-2);
   --font-sans: var(--font-sans);
@@ -76,14 +76,14 @@
 
   --whatsapp: oklch(0.72 0.19 155);
   --whatsapp-foreground: oklch(0.13 0.04 160);
-  --telegram: oklch(0.78 0.14 210);
-  --telegram-foreground: oklch(0.12 0.03 230);
+  --neon-cyan: oklch(0.78 0.14 210);
+  --neon-cyan-foreground: oklch(0.12 0.03 230);
   --neon-violet: oklch(0.62 0.24 295);
   --surface-2: oklch(0.205 0.032 274);
 
   --gradient-hero: linear-gradient(160deg, #0d0e15 0%, #151828 55%, #0d0e15 100%);
   --glow-whatsapp: 0 0 40px -8px oklch(0.72 0.19 155 / 55%);
-  --glow-telegram: 0 0 40px -8px oklch(0.78 0.14 210 / 55%);
+  --glow-neon-cyan: 0 0 40px -8px oklch(0.78 0.14 210 / 55%);
 }
 
 .dark {
@@ -137,7 +137,7 @@
   text-shadow: 0 0 24px oklch(0.72 0.19 155 / 60%);
 }
 
-@utility text-glow-telegram {
+@utility text-glow-neon-cyan {
   text-shadow: 0 0 24px oklch(0.78 0.14 210 / 60%);
 }
 

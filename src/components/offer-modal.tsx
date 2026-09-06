@@ -119,22 +119,22 @@ export function OfferModal({ offer, onClose }: OfferModalProps) {
 
         <div className="mt-5">
           <p className="flex items-center gap-2 text-sm font-semibold">
-            <ListOrdered className="h-4 w-4 text-telegram" aria-hidden />
+            <ListOrdered className="h-4 w-4 text-neon-cyan" aria-hidden />
             Como aproveitar
           </p>
           <ol className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li className="flex gap-2">
-              <span className="font-display font-bold text-telegram">1.</span>
+              <span className="font-display font-bold text-neon-cyan">1.</span>
               {offer.coupon
                 ? "Copie o cupom acima antes de sair da página."
                 : "Clique no botão de oferta abaixo — o desconto já está aplicado."}
             </li>
             <li className="flex gap-2">
-              <span className="font-display font-bold text-telegram">2.</span>
+              <span className="font-display font-bold text-neon-cyan">2.</span>
               Você será redirecionado à loja parceira através do nosso link rastreável.
             </li>
             <li className="flex gap-2">
-              <span className="font-display font-bold text-telegram">3.</span>
+              <span className="font-display font-bold text-neon-cyan">3.</span>
               {offer.coupon
                 ? "Finalize a compra aplicando o cupom no checkout."
                 : "Finalize a compra normalmente — o melhor preço já está ativo."}
