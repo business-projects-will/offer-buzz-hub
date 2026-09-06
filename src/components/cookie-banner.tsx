@@ -39,7 +39,7 @@ export function CookieBanner() {
       className="glass-panel fixed inset-x-3 bottom-3 z-50 mx-auto max-w-md rounded-2xl p-4 shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-6"
     >
       <div className="flex items-start gap-3">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-telegram/15 text-telegram">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-neon-cyan/15 text-neon-cyan">
           <Cookie className="h-5 w-5" aria-hidden />
         </span>
         <div className="min-w-0">

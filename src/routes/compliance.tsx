@@ -6,7 +6,6 @@ import {
   Globe,
   MessageCircle,
   Scale,
-  Send,
   ShieldCheck,
 } from "lucide-react";
 
@@ -35,28 +34,16 @@ export const Route = createFileRoute("/compliance")({
   component: CompliancePage,
 });
 
-const TRAFFIC_SPLIT = [
+const TRAFFIC_SOURCES = [
   {
     label: "WhatsApp",
-    pct: 50,
     icon: MessageCircle,
-    bar: "bg-whatsapp",
     text: "text-whatsapp",
     desc: "Grupo VIP segmentado por categorias de interesse",
   },
   {
-    label: "Telegram",
-    pct: 30,
-    icon: Send,
-    bar: "bg-telegram",
-    text: "text-telegram",
-    desc: "Canal de alertas instantâneos de bug de preço",
-  },
-  {
     label: "Direto Web",
-    pct: 20,
     icon: Globe,
-    bar: "bg-neon-violet",
     text: "text-neon-violet",
     desc: "Tráfego orgânico e direto no portal de ofertas",
   },
@@ -75,7 +62,7 @@ function CompliancePage() {
         {/* Cabeçalho corporativo */}
         <header className="glass-panel rounded-3xl p-5 sm:p-10">
           <div className="flex flex-col items-start gap-4 sm:flex-row">
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-telegram/12 text-telegram">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-neon-cyan/12 text-neon-cyan">
               <ShieldCheck className="h-6 w-6" aria-hidden />
             </span>
             <div className="min-w-0">
@@ -108,7 +95,7 @@ function CompliancePage() {
               <p className="text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
                 Publisher ID
               </p>
-              <p className="font-display mt-1 font-mono text-lg font-bold text-telegram">
+              <p className="font-display mt-1 font-mono text-lg font-bold text-neon-cyan">
                 {publisherId}
               </p>
               <p className="mt-4 text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">
@@ -150,7 +137,7 @@ function CompliancePage() {
           {/* Descrição formal */}
           <div className="glass-panel rounded-3xl p-5 sm:p-7 md:col-span-2">
             <h2 className="font-display flex items-center gap-2 text-lg font-bold">
-              <FileText className="h-5 w-5 text-telegram" aria-hidden />
+              <FileText className="h-5 w-5 text-neon-cyan" aria-hidden />
               Modelo de operação
             </h2>
             <dl className="mt-4 space-y-4 text-sm">
@@ -167,10 +154,9 @@ function CompliancePage() {
                 <dd className="mt-1 leading-relaxed text-muted-foreground">
                   Portal editorial de curadoria de ofertas que opera como Direct Linker &amp; Coupon
                   Portal, distribuindo links rastreáveis e códigos de cupom exclusivamente por meio
-                  de canais de mensagens segmentados (grupos de WhatsApp e canais de Telegram
-                  organizados por categoria de interesse), além de vitrine web própria. Todo clique
-                  é atribuído via deep links rastreáveis da rede, sem uso de adware, iframes ocultos
-                  ou cookie dropping.
+                  de canais de mensagens segmentados (grupos de WhatsApp organizados por categoria
+                  de interesse), além de vitrine web própria. Todo clique é atribuído via deep links
+                  rastreáveis da rede, sem uso de adware, iframes ocultos ou cookie dropping.
                 </dd>
               </div>
               <div>
@@ -197,28 +183,18 @@ function CompliancePage() {
           </div>
         </div>
 
-        {/* Divisão de tráfego */}
+        {/* Fontes de tráfego */}
         <div className="glass-panel mt-6 rounded-3xl p-5 sm:p-8">
           <h2 className="font-display flex items-center gap-2 text-lg font-bold">
             <Globe className="h-5 w-5 text-neon-violet" aria-hidden />
-            Divisão de tráfego estimada
+            Fontes de tráfego
           </h2>
-          <div
-            className="mt-5 flex h-4 w-full overflow-hidden rounded-full"
-            role="img"
-            aria-label="Divisão de tráfego: WhatsApp 50%, Telegram 30%, Direto Web 20%"
-          >
-            {TRAFFIC_SPLIT.map((t) => (
-              <div key={t.label} className={t.bar} style={{ width: `${t.pct}%` }} />
-            ))}
-          </div>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-3">
-            {TRAFFIC_SPLIT.map((t) => (
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            {TRAFFIC_SOURCES.map((t) => (
               <li key={t.label} className="rounded-2xl bg-background/40 p-4">
                 <p className={`flex items-center gap-2 text-sm font-bold ${t.text}`}>
                   <t.icon className="h-4 w-4" aria-hidden />
                   {t.label}
-                  <span className="font-display ml-auto text-lg">{t.pct}%</span>
                 </p>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t.desc}</p>
               </li>
