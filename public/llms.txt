@@ -1,0 +1,12 @@
+# Achadinhos-AW
+
+> Portal de curadoria de ofertas e cupons, com divulgação pelo site e WhatsApp. Achadinhos-AW significa Achadinhos Anne e Will.
+
+O portal não vende produtos diretamente nem processa pagamentos. Links de afiliados podem gerar comissão sem custo adicional para o visitante.
+
+O catálogo em /ofertas está em desenvolvimento e contém produtos demonstrativos. Seus preços, descontos e cupons não representam ofertas reais disponíveis.
+
+## Páginas
+
+- [Início](https://www.achadinhos-aw.com.br/): apresentação da comunidade e acesso ao grupo de WhatsApp.
+- [Apoio ao afiliado](https://www.achadinhos-aw.com.br/compliance): modelo de operação e informações sobre os programas de afiliados Awin e Mercado Livre.

@@ -2,17 +2,30 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { contentSecurityPolicy, securityHeaders } from "./lib/security-headers";
 
 type ServerEntry = {
-  fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
+  fetch: (request: Request) => Promise<Response> | Response;
 };
 
 let serverEntryPromise: Promise<ServerEntry> | undefined;
 
 async function getServerEntry(): Promise<ServerEntry> {
   if (!serverEntryPromise) {
-    serverEntryPromise = import("@tanstack/react-start/server-entry").then(
-      (m) => (m.default ?? m) as ServerEntry,
+    serverEntryPromise = import("@tanstack/react-start/server").then(
+      ({ createStartHandler, defaultStreamHandler }) => ({
+        fetch: createStartHandler((context) => {
+          if (import.meta.env.PROD) {
+            context.responseHeaders.set(
+              "Content-Security-Policy",
+              contentSecurityPolicy(context.router.options.ssr?.nonce),
+            );
+            // Each streamed HTML response has its own nonce; do not cache it at the CDN.
+            context.responseHeaders.set("Cache-Control", "private, no-store");
+          }
+          return defaultStreamHandler(context);
+        }),
+      }),
     );
   }
   return serverEntryPromise;
@@ -45,17 +58,32 @@ function isH3SwallowedErrorBody(body: string): boolean {
 }
 
 export default {
-  async fetch(request: Request, env: unknown, ctx: unknown) {
+  async fetch(request: Request) {
     try {
       const handler = await getServerEntry();
-      const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const response = await handler.fetch(request);
+      return secureResponse(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return secureResponse(
+        new Response(renderErrorPage(), {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }),
+      );
     }
   },
 };
+
+function secureResponse(response: Response): Response {
+  const headers = new Headers(response.headers);
+  for (const [name, value] of Object.entries(securityHeaders)) headers.set(name, value);
+  if (import.meta.env.PROD && !headers.has("Content-Security-Policy")) {
+    headers.set("Content-Security-Policy", contentSecurityPolicy());
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}

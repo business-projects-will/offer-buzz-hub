@@ -1,3 +1,4 @@
+import { pageSeo } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -12,22 +13,12 @@ import {
 import { WHATSAPP_URL } from "@/lib/community-links";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Achadinhos-AW — Ofertas VIP no WhatsApp em Tempo Real" },
-      {
-        name: "description",
-        content: "Seja membro e pegue os melhores cupons e ofertas no WhatsApp.",
-      },
-      { property: "og:title", content: "Achadinhos-AW — Ofertas VIP no WhatsApp" },
-      {
-        property: "og:description",
-        content: "Seja membro e pegue os melhores cupons e ofertas no WhatsApp.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageSeo({
+      path: "/",
+      title: "Achadinhos-AW — Ofertas VIP no WhatsApp",
+      description: "Receba a curadoria de ofertas e cupons do Achadinhos-AW no grupo de WhatsApp.",
+    }),
   component: HomePage,
 });
 
