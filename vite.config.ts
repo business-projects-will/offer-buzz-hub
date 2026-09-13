@@ -4,13 +4,18 @@ import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
+import { securityHeaders } from "./src/lib/security-headers";
 
 export default defineConfig({
   plugins: [
     tanstackStart({
       server: { entry: "server" },
     }),
-    nitro(),
+    nitro({
+      routeRules: {
+        "/**": { headers: securityHeaders },
+      },
+    }),
     viteReact(),
     tailwindcss(),
     tsConfigPaths(),

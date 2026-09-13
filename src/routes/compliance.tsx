@@ -1,3 +1,4 @@
+import { pageSeo } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   BadgeCheck,
@@ -10,27 +11,13 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/compliance")({
-  head: () => ({
-    meta: [
-      { title: "Apoio ao Afiliado — Achadinhos-AW" },
-      {
-        name: "description",
-        content:
-          "Informações de apoio aos programas de afiliados Awin e Mercado Livre do Achadinhos-AW.",
-      },
-      {
-        property: "og:title",
-        content: "Apoio ao Afiliado — Achadinhos-AW",
-      },
-      {
-        property: "og:description",
-        content:
-          "Informações de apoio aos programas de afiliados Awin e Mercado Livre do Achadinhos-AW.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
+  head: () =>
+    pageSeo({
+      path: "/compliance",
+      title: "Apoio ao Afiliado — Achadinhos-AW",
+      description:
+        "Informações sobre o modelo de operação e os programas de afiliados Awin e Mercado Livre do Achadinhos-AW.",
+    }),
   component: CompliancePage,
 });
 

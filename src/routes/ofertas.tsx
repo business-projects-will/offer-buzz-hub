@@ -1,3 +1,4 @@
+import { pageSeo } from "@/lib/seo";
 import { useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight, Clock, Search, SearchX, Tag } from "lucide-react";
@@ -14,24 +15,14 @@ import { OfferModal } from "@/components/offer-modal";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/ofertas")({
-  head: () => ({
-    meta: [
-      { title: "Ofertas Hoje — Achadinhos-AW | Promoções e Cupons Verificados" },
-      {
-        name: "description",
-        content:
-          "Busque e filtre as ofertas de hoje em Tecnologia, Moda, Pets e Cosméticos. Descontos de até 33% com cupons exclusivos para membros.",
-      },
-      { property: "og:title", content: "Ofertas Hoje — Achadinhos-AW" },
-      {
-        property: "og:description",
-        content:
-          "Busque e filtre as ofertas de hoje em Tecnologia, Moda, Pets e Cosméticos com cupons exclusivos.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageSeo({
+      path: "/ofertas",
+      title: "Ofertas em desenvolvimento — Achadinhos-AW",
+      description:
+        "Catálogo demonstrativo do Achadinhos-AW com busca e filtros. As ofertas e os cupons reais ainda estão em desenvolvimento.",
+      noindex: true,
+    }),
   component: OfertasPage,
 });
 

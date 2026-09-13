@@ -77,25 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Achadinhos-AW — Clube VIP de Ofertas no WhatsApp" },
-      {
-        name: "description",
-        content:
-          "Receba as melhores ofertas, cupons e bugs de preço em tempo real nos nossos grupos VIP de WhatsApp. Economize todos os dias.",
-      },
       { name: "author", content: "Achadinhos-AW" },
-      { property: "og:title", content: "Achadinhos-AW — Clube VIP de Ofertas" },
-      {
-        property: "og:description",
-        content: "Ofertas, cupons e alertas de bug de preço em tempo real no WhatsApp.",
-      },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:site_name", content: "Achadinhos-AW" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "describedby", href: "/llms.txt", type: "text/plain" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
